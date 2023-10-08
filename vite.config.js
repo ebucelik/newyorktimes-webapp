@@ -6,11 +6,11 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        register: resolve(__dirname, 'src/ui/register.html'),
-        favorites: resolve(__dirname, 'src/ui/favorites.html'),
-        styler: resolve(__dirname, 'src/Styler/styler.css'),
-        registerts: resolve(__dirname, 'src/register.ts'),
+        main: resolve(".", 'index.html'),
+        register: resolve(".", 'src/ui/register.html'),
+        favorites: resolve(".", 'src/ui/favorites.html'),
+        styler: resolve(".", 'src/Styler/styler.css'),
+        registerts: resolve(".", 'src/register.ts'),
       },
     },
   },
