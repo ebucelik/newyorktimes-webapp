@@ -17,6 +17,8 @@ export default defineConfig({
         favorites: resolve(__dirname, 'src/ui/favorites.html'),
         styler: resolve(__dirname, 'src/Styler/styler.css'),
         registerts: resolve(__dirname, 'src/register.ts'),
+        favoritefilled: resolve(__dirname, 'src/resources/favorite-filled.png'),
+        favorite: resolve(__dirname, 'src/resources/favorite.png')
       },
     },
   },

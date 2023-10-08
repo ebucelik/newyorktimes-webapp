@@ -130,13 +130,3 @@ function addOrRemoveFavoriteTopStory(result: Result, image: HTMLImageElement) {
 function isTopStoryIncluded(uri: string): boolean {
     return favoriteTopStories.find(result => result.uri == uri) != null;
 }
-
-(function prependBase() {
-    document.querySelectorAll("a").forEach((link) => {
-      let url = link.getAttribute("href");
-      if (url?.startsWith("/")) {
-        url = import.meta.env.BASE_URL + url.slice(1);
-        link.setAttribute("href", url);
-      }
-    });
-  })();
