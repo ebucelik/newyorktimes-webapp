@@ -1,0 +1,27 @@
+$primary-color: black;
+$primary-fontfamily: "Times New Roman", Times, serif;
+
+body {
+    font-family: $primary-fontfamily;
+}
+
+#app {
+    color: $primary-color;
+}
+
+#headerImage {
+    text-align: center;
+}
+
+#registerForm {
+    display: inline-block;
+    width: 500px;
+    text-align: left;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+#registerFormDiv {
+    text-align: center;
+}
+  
