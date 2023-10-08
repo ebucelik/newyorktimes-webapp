@@ -20,5 +20,5 @@ export default defineConfig({
       },
     },
   },
-  base: '/ebucelik.github.io/newyorktimes-webapp'
+  base: 'https:///ebucelik.github.io/newyorktimes-webapp'
 })
