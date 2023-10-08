@@ -32,7 +32,7 @@ jobs:
       run: npm run test
 
     - name: Deploy
-      uses: ebucelik/pages-build-deployment@v4
+      uses: ebucelik/github-pages-deploy-action@v4
       with:
-        folder: dist
-        branch: main
+        target_branch: gh-pages
+        build_dir: dist
