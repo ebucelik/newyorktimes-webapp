@@ -8,7 +8,7 @@
     "lint": "npx eslint .",
     "dev": "vite",
     "prod": "vite build",
-    "deploy": "gh-pages -d ."
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@types/jest": "^29.5.5",
