@@ -20,4 +20,5 @@ export default defineConfig({
       },
     },
   },
+  base: '/ebucelik.github.io/newyorktimes-webapp'
 })
