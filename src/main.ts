@@ -85,7 +85,7 @@ function createTopStoryElement(topStory: TopStory) {
         cardDiv.appendChild(cardBodyDiv);
 
         const favoriteImage = document.createElement("img");
-        favoriteImage.src = isTopStoryIncluded(result.uri) ? "/src/resources/favorite-filled.png" : "/src/resources/favorite.png";
+        favoriteImage.src = isTopStoryIncluded(result.uri) ? "https:///ebucelik.github.io/newyorktimes-webapp/assets/resources/favorite-filled.png" : "https:///ebucelik.github.io/newyorktimes-webapp/assets/resources/favorite.png";
         favoriteImage.setAttribute("width","25px");
         favoriteImage.setAttribute("height","25px");
         favoriteImage.addEventListener("click", () => addOrRemoveFavoriteTopStory(result, favoriteImage));
@@ -118,7 +118,7 @@ function addOrRemoveFavoriteTopStory(result: Result, image: HTMLImageElement) {
         favoriteTopStories.push(result);
     }
 
-    image.src = isTopStoryIncluded(result.uri) ? "/src/resources/favorite-filled.png" : "/src/resources/favorite.png";
+    image.src = isTopStoryIncluded(result.uri) ? "https:///ebucelik.github.io/newyorktimes-webapp/assets/resources/favorite-filled.png" : "https:///ebucelik.github.io/newyorktimes-webapp/assets/resources/favorite.png";
 
     const favoritesMenuTitle = document.getElementById("favorites");
     
