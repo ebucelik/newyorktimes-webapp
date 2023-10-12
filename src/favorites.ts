@@ -1,7 +1,7 @@
 import { Result } from "./models/result";
 
 let favoriteTopStories: Result[] = [];
-let topStoriesJson = localStorage.getItem('topStories');
+const topStoriesJson = localStorage.getItem('topStories');
 
 if (topStoriesJson != null) {
     favoriteTopStories = JSON.parse(topStoriesJson) as Result[];
