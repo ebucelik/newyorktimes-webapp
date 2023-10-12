@@ -1,16 +1,5 @@
-import { TopStory } from "./models/topstory";
 import { Result } from "./models/result";
-import { fetchResource } from "./network/apiclient";
 
-enum TopStories {
-    World = "World",
-    Arts = "Arts",
-    Home = "Home",
-    Science = "Science",
-    US = "US"
-}
-
-const topicDropdown = document.getElementById("topic-dropdown");
 let favoriteTopStories: Result[] = [];
 let topStoriesJson = localStorage.getItem('topStories');
 
@@ -24,35 +13,7 @@ if (favoritesMenuTitle != null) {
     favoritesMenuTitle.textContent = favoriteTopStories.length > 0 ? "Favorites (" + favoriteTopStories.length + ")" : "Favorites";
 }
 
-for (const topStory in TopStories) {
-    const li = document.createElement("li");
-    const button = document.createElement("button");
-
-    button.classList.add("dropdown-item");
-    button.setAttribute("type", "button");
-    button.addEventListener("click", () => getTopStory(topStory));
-
-    button.textContent = topStory;
-
-    li.appendChild(button);
-
-    topicDropdown?.appendChild(li);
-}
-
-function getTopStory(topStory: string) {
-    const dropdownButton = document.getElementById("dropdown-button");
-    
-    if(dropdownButton != null) {
-        dropdownButton.textContent = topStory;
-    }
-    
-    fetchResource<TopStory>("https://api.nytimes.com/svc/topstories/v2/" + topStory.toLowerCase() + ".json")
-    .then(result => {
-        createTopStoryElement(result);
-    });
-}
-
-function createTopStoryElement(topStory: TopStory) {
+function createTopStoryElement() {
     const topStoriesDiv = document.getElementById("topStories");
     
     topStoriesDiv?.replaceChildren();
@@ -60,7 +21,7 @@ function createTopStoryElement(topStory: TopStory) {
     let ul = document.createElement("ul");
     ul.setAttribute("class", "list-group list-group-horizontal d-flex justify-content-center");
 
-    topStory.results.forEach((result, index) => {
+    favoriteTopStories.forEach((result, index) => {
         const li = document.createElement("li");
         li.setAttribute("class", "list-group-item");
     
@@ -113,15 +74,9 @@ function createTopStoryElement(topStory: TopStory) {
             ul.setAttribute("class", "list-group list-group-horizontal d-flex justify-content-center");
         }
 
-        if (topStory.results.length == (index + 1) && topStory.results.length % 3 > 0) {
+        if (favoriteTopStories.length == (index + 1) && favoriteTopStories.length % 3 > 0) {
             topStoriesDiv?.appendChild(ul);
-        }
-
-        const favoritesMenuTitle = document.getElementById("favorites");
-
-        if (favoritesMenuTitle != null) {
-            favoritesMenuTitle.textContent = favoriteTopStories.length > 0 ? "Favorites (" + favoriteTopStories.length + ")" : "Favorites";
-        }
+        } 
     });
 }
 
@@ -142,8 +97,12 @@ function addOrRemoveFavoriteTopStory(result: Result, image: HTMLImageElement) {
     if (favoritesMenuTitle != null) {
         favoritesMenuTitle.textContent = favoriteTopStories.length > 0 ? "Favorites (" + favoriteTopStories.length + ")" : "Favorites";
     }
+
+    createTopStoryElement();
 }
 
 function isTopStoryIncluded(uri: string): boolean {
     return favoriteTopStories.find(result => result.uri == uri) != null;
 }
+
+createTopStoryElement();
